@@ -7,3 +7,4 @@ https://docs.google.com/presentation/d/1cTEkWFA8HPIpHP0MitNHP9VXR4vq6LCxAr046YtA
 ### Python Basics
 https://docs.google.com/presentation/d/14_zxcOJ-aJETIFZHXxW17K-JqrqBqXbmSc_nSnY7T-U/edit?usp=sharing
 ### Python Libs for ML-DS
+https://docs.google.com/presentation/d/1YhqTC_PPQEK9reUOV8JdMfvZJ7_MPrmVgOX_YhqMncU/edit?usp=sharing
