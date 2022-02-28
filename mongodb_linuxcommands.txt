@@ -1,0 +1,89 @@
+install
+-------
+sudo apt install mongodb
+
+# When you start mongod you're basically saying "start the MongoDB process and run it in the background". mongod has several default parameters, such as storing data in /data/db and running on port 27017. mongo is the command-line shell that connects to a specific instance of mongod .
+
+starting shell
+--------------
+To connect with mongo we have to first start 'mongod' services.
+sudo mongod
+
+# then in anther terminal
+sudo mongo
+# and then to stop
+> exit
+
+Problems:
+#########
+# Try the following two things:
+
+# By default, Mongo points to that /data/db folder, and it either forgets to create or set ownership of it on installation.
+sudo mkdir -p /data/db/
+# And then, we’ll set the ownership of the folder to the user that’s going to start the mongod service. Since I only use if for local development in my computer, I set myself as the owner:
+sudo chown `id -u` /data/db
+Now, just running mongod should work.
+
+
+# open config file
+sudo vi /etc/mongodb.conf
+
+
+sudo systemctl status mongodb
+sudo systemctl start mongodb
+sudo systemctl stop mongodb
+sudo systemctl restart mongodb
+
+sudo systemctl enable mongodb
+sudo systemctl disable mongodb
+
+# or using the service
+sudo service mongodb restart
+sudo service mongod restart
+
+uninstall
+---------
+sudo systemctl stop mongodb
+sudo apt purge mongodb (sudo apt-get --purge mongo*)
+sudo apt autoremove
+
+# Misc
+#######
+# to check whether mongod is enabled
+systemctl list-unit-files --type=service
+
+# If it shows as "disabled", then you need to enable it.
+sudo systemctl enable mongod.service
+
+# If we want to see whether mongod.service file exists in case this file is missing, check in
+ls /lib/systemd/system
+
+# You will see a file
+/lib/systemd/system/mongod.service
+
+
+
+
+systemctl list-unit-files | grep mongod
+
+
+mongo shell examples:
+#####################
+show dbs
+> show dbs
+> db
+# On a freshly-connected shell instance, the selected database is always called test
+> use souro_db
+> db.souro_db.insert({name: 'Souro'})
+> show dbs
+> show collections
+> db.help()
+> db.souro_db.help()
+
+
+
+
+
+
+
+
